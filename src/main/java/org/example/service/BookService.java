@@ -1,6 +1,6 @@
 package org.example.service;
 
-import java.awt.print.Book;
+import org.example.model.Book;
 import java.util.List;
 
 public interface BookService {
@@ -9,8 +9,6 @@ public interface BookService {
     public void dropBookTable();
 
     public void saveBook(String authorName, String title, int year);
-
-    public Book getBook(int id);
 
     public void removeBook(int id);
 
