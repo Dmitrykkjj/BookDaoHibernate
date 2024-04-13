@@ -1,6 +1,6 @@
 package org.example.dao;
 
-import org.example.util.Util;
+import org.example.util.UtilHibernate;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -29,7 +29,7 @@ public class BookDaoHibernateImpl implements BookDao {
     @Override
     public void createBookTable() {
         Transaction transaction = null;
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         try {
             transaction = session.beginTransaction();
             session.createSQLQuery(createBookTable).executeUpdate();
@@ -40,14 +40,14 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
     }
 
     @Override
     public void dropBookTable() {
         Transaction transaction = null;
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         try {
             transaction = session.beginTransaction();
             session.createSQLQuery(dropBookTable).executeUpdate();
@@ -58,14 +58,14 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
     }
 
     @Override
     public void saveBook(String authorName, String title, int year) {
         Transaction transaction = null;
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         try {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery(insertBook);
@@ -80,7 +80,7 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
 
     }
@@ -88,7 +88,7 @@ public class BookDaoHibernateImpl implements BookDao {
     @Override
     public void removeBook(int id) {
         Transaction transaction = null;
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         try {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery(deleteBook);
@@ -101,13 +101,13 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
     }
 
     @Override
     public List<Book> getBooks() {
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         Transaction transaction = null;
         List<Book> books = new ArrayList<>();
         try {
@@ -119,7 +119,7 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
         return books;
     }
@@ -127,7 +127,7 @@ public class BookDaoHibernateImpl implements BookDao {
     @Override
     public void cleanBookTable() {
         Transaction transaction = null;
-        Session session = Util.openSession();
+        Session session = UtilHibernate.openSession();
         try {
             transaction = session.beginTransaction();
             SQLQuery query = session.createSQLQuery("TRUNCATE TABLE Books");
@@ -139,7 +139,7 @@ public class BookDaoHibernateImpl implements BookDao {
             }
             e.printStackTrace();
         } finally {
-            Util.closeSession(session);
+            UtilHibernate.closeSession(session);
         }
     }
 }

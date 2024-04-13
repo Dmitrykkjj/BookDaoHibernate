@@ -7,7 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class Util {
+public class UtilHibernate {
     static final String URL = "jdbc:mysql://localhost:3306/mydbtest";
     static final String USER = "root";
     static final String PASSWORD = "root";

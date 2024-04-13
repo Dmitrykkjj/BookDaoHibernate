@@ -69,12 +69,6 @@ public class Book {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Book{");
-        sb.append("id=").append(id);
-        sb.append(", authorName='").append(authorName).append('\'');
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", year=").append(year);
-        sb.append('}');
-        return sb.toString();
+        return "Book - ID: " + id + ", Author: " + authorName + ", Title: " + title + ", Year: " + year;
     }
 }
