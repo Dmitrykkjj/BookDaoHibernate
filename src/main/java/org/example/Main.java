@@ -5,8 +5,12 @@ import org.example.dao.BookDaoJDBCImpl;
 import org.example.model.Book;
 import org.example.service.BookService;
 import org.example.service.BookServiceImpl;
+import org.example.util.ExcelExporter;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -49,8 +53,12 @@ public class Main {
                 "A Moveable Feast",
                 1964);
         List<Book> books = bookDao.getBooks();
-        for (Book book : books) {
-            System.out.println(book);
-        }
+        books.stream()
+                .sorted(Comparator.comparing(Book::getYear))
+                .forEach(System.out::println);
+
+        String filePath = "books.xlsx";
+
+        ExcelExporter.exportToExcel(books, filePath);
     }
 }

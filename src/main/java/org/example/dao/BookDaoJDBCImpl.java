@@ -56,7 +56,6 @@ public class BookDaoJDBCImpl implements BookDao {
             preparedStatement.setInt(3, year);
 
             int rowsAffected = preparedStatement.executeUpdate();
-            System.out.println("Rows affected: " + rowsAffected);
         } catch (SQLException e) {
             e.printStackTrace();
         }
